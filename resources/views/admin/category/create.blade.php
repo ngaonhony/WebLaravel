@@ -21,7 +21,7 @@
                         
                         <div class="form-group">
                             <strong> Tên danh mục </strong>
-                            <input type="text" name="name" class="form-control" placeholder="nhập danh mục">
+                            <input type="text" name="name" class="form-control" placeholder="nhập danh mục" required>
                         </div>
                         
                     </div>

@@ -50,16 +50,22 @@
                     <td>{{$phim->type_movie}}</td>
                     <td>{{$phim->nation_id}}</td>
                     <td>{{$phim->year}}</td>
-                    <td>{{$phim->image}}</td>
+                    <td><img width="80%" src="{{asset('/images/'.$phim->image)}}"></td>
                     <td>{{$phim->description}}</td>
                     <td>{{$phim->duration}}</td>
                     <td>
-                        <form action="{{route('phim.destroy', $phim->id)}}" method="POST">
-                            <a href="{{route('phim.edit' , $phim->id)}}" class="btn btn-info"> Sửa</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger"> Xóa </button>
-                        </form>
+                    <form action="{{ route('phim.destroy', $phim->id) }}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
+    <a href="{{ route('phim.edit', $phim->id) }}" class="btn btn-info">Sửa</a>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Xóa</button>
+</form>
+
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
                     </td>
                 </tr>
                 @endforeach
@@ -68,4 +74,11 @@
     </div>
 </div>
 </div>
+<script>
+    document.getElementById('deleteButton').addEventListener('click', function() {
+        if (confirm('Bạn có chắc chắn muốn xóa phim này?')) {
+            document.getElementById('deleteForm').submit();
+        }
+    });
+</script>
 @endsection

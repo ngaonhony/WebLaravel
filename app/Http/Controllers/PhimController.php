@@ -7,6 +7,7 @@ use App\Models\Phim;
 use App\Models\Category;
 use App\Models\Nation;
 use App\Models\Genre;
+use Illuminate\Support\Facades\File;
 class PhimController extends Controller
 {
    
@@ -42,13 +43,28 @@ class PhimController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $data['num_view'] = 0; // Đặt giá trị mặc định cho trường num_view
-        $data['review'] = 0;
-        Phim::create($data);
-       return redirect()->route('phim.index')->with('thongbao', 'Thêm phim thành công');
+        $phim = new Phim;
+        $phim->name = $request->input('name');
+        $phim->status = $request->input('status');
+        $phim->director = $request->input('director');
+        $phim->category_id = $request->input('category_id');
+        $phim->type_movie = $request->input('type_movie');
+        $phim->nation_id = $request->input('nation_id');
+        $phim->year = $request->input('year');
+        $phim->description = $request->input('description');
+        $phim->duration = $request->input('duration');
+       
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $image->move(public_path('images'), $filename);
+            $phim->image= $filename;
+        }
+    
+        $phim->save();
+        return redirect()->route('phim.index')->with('thongbao', 'Thêm phim thành công');
     }
-
     /**
      * Display the specified resource.
      *
@@ -81,10 +97,32 @@ class PhimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,phim $phim)
-    {
-       $phim-> update( $request->all());
+    {$phim= Phim::find($phim->id);
+        if ($phim) {
+            $phim->name = $request->input('name');
+        $phim->status = $request->input('status');
+        $phim->director = $request->input('director');
+        $phim->category_id = $request->input('category_id');
+        $phim->type_movie = $request->input('type_movie');
+        $phim->nation_id = $request->input('nation_id');
+        $phim->year = $request->input('year');
+        $phim->description = $request->input('description');
+            // có file đính kèm trong form update thì tìm và xóa nếu k có thì k xóa
+            $anhcu = 'images/' .$phim->image;
+            if (File::exists($anhcu)) {
+                File::delete($anhcu);
+            }
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $filename = time().'.'.$extension;
+                $image->move(public_path('images'), $filename);
+                $phim->image= $filename;
+            }
+       $phim-> update();
        return redirect()->route('phim.index')->with('thongbao','cập nhật phim thành công!');
     }
+}
 
     /**
      * Remove the specified resource from storage.
@@ -93,8 +131,12 @@ class PhimController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(phim $phim)
-    {
+    { $anhcu = 'images/' .$phim->image;
+        if (File::exists($anhcu)) {
+            File::delete($anhcu);
+        }
         $phim->delete();
         return redirect()->route('phim.index')->with('thongbao','xóa phim thành công!');
     }
+
 }

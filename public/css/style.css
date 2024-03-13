@@ -85,11 +85,18 @@ a.active {
   color: #ffffff66;
   margin: 10px 0 6px;
 }
-
+.film{
+  height: 1315px;
+  width: 100%;
+}
 .content {
   background-color: #ffffff;
   /* padding: 80px 0; */
-  height: 1185px;
+  height: auto;
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .movie-title {
@@ -157,9 +164,13 @@ a.active {
 .movie-body-left a {
   color: #151515;
   text-decoration: none;
-  font-size: 20px;
   line-height: 20px;
   font-weight: 700;
+  max-width:272px;
+  font-size: 20px;
+  overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .movie-body-left a:hover {
@@ -708,7 +719,6 @@ textarea {
   background-image: none;
   border: 1px solid rgba(246, 246, 246, 0.8);
   border-radius: 6px;
-  -webkit-appearance: none;
   transition: 0.3s ease-in-out;
 }
 

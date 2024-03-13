@@ -12,7 +12,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{{asset('css/component.css')}}">
-
     <!-- GOOGLE FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
@@ -27,8 +26,7 @@
 
     <!-- BOX ICON  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="./assets/fontawesome-free-5.15.4-web/css/all.min.css">
-    <link rel="stylesheet" href="./themify-icons/themify-icons.css">
+<link rel="stylesheet" href="{{asset('plugins/fontawesome/css/all.min.css')}}">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
@@ -77,6 +75,8 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -36,8 +36,9 @@ class NguoiDungController extends Controller
      */
     public function store(Request $request)
     {
-        NguoiDung::create($request->all());
-        return redirect()->route('nguoidung.index')->with('thongbao', 'Thêm User thành công!');
+        $data = $request->all();
+        Phim::create($data);
+        return redirect()->route('phim.index')->with('thongbao', 'Thêm phim thành công');
     }
 
     /**
@@ -71,7 +72,10 @@ class NguoiDungController extends Controller
      */
     public function update(Request $request, NguoiDung $nguoidung)
     {
-        $nguoidung->update($request->all());
+        $data = $request->all();
+      
+        $nguoidung->update($data);
+       
         return redirect()->route('nguoidung.index')->with('thongbao','Cập nhật User thành công!'); 
     }
 

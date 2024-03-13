@@ -20,8 +20,8 @@
                     <div class="col-md-6">
                         
                         <div class="form-group">
-                            <strong> Tên quóc gia </strong>
-                            <input type="text" name="name" class="form-control" placeholder="nhập quốc gia">
+                            <strong> Tên quốc gia </strong>
+                            <input type="text" name="name" class="form-control" placeholder="nhập quốc gia" required>
                         </div>
                         
                     </div>

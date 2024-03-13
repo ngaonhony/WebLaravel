@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <strong> Tên thể loại </strong>
                             <input type="text" name="name" value="{{$genre->name}}" class="form-control"
-                                placeholder="nhập tên thể loại">
+                                placeholder="nhập tên thể loại" required>
                         </div>
                        
                     </div>

@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class Nation extends Model
 {
     protected $table = 'nation';
+    protected $primaryKey = 'id';
     use HasFactory;
    
     // Nếu không sử dụng các trường timestamps (created_at, updated_at)
@@ -15,4 +17,7 @@ class Nation extends Model
     protected $fillable = [
         'name',
     ];
+    public function movie(){
+        return $this->hasMany(Phim::class);
+     }
 }

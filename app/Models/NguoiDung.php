@@ -10,8 +10,8 @@ class NguoiDung extends Model
     public $timestamps = false;
     use HasFactory;
     protected $table = 'nguoidungs';
+    protected $primaryKey = 'id';
     protected $fillable = [
-    'id',
      'username',
      'name',
      'password',

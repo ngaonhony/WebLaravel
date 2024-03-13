@@ -34,13 +34,18 @@
                         <td>{{$nation->name}} </td>
                       
                         <td>
-                            <form action="{{route('nation.destroy', $nation->id)}}" method="POST">
+                            <form action="{{route('nation.destroy', $nation->id)}}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
                                 <a href="{{route('nation.edit', $nation->id)}}" class="btn btn-info"> sửa </a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa </button>
 
                             </form>
+                            <script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
                         </td>
 
                     </tr>

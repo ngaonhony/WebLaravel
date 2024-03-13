@@ -40,7 +40,6 @@
 @endphp
                     @foreach ($nguoidung as $User)
                     <tr>
-                        <td>{{++$i}} </td>
                         <td>{{$User->id}} </td>
                         <td>{{$User->username}} </td>
                         <td>{{$User->name}} </td>
@@ -49,13 +48,16 @@
                         <td>{{$User->birthday}} </td>
                         <td>{{$User->sex}} </td>
                         <td>
-                            <form action="{{route('nguoidung.destroy', $User->id)}}" method="POST">
+                            <form action="{{route('nguoidung.destroy', $User->id)}}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
                                 <a href="{{route('nguoidung.edit', $User->id)}}" class="btn btn-info"> sửa </a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa </button>
-
-                            </form>
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
                         </td>
 
                     </tr>

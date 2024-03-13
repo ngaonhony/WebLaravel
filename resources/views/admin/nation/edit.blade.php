@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <strong> Tên quốc gia </strong>
                             <input type="text" name="name" value="{{$nation->name}}" class="form-control"
-                                placeholder="nhập tên quốc gia">
+                                placeholder="nhập tên quốc gia" required>
                         </div>
                        
                     </div>

@@ -37,13 +37,18 @@
                         <td>{{$genre->name}} </td>
                       
                         <td>
-                            <form action="{{route('genre.destroy', $genre->id)}}" method="POST">
+                            <form action="{{route('genre.destroy', $genre->id)}}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
                                 <a href="{{route('genre.edit', $genre->id)}}" class="btn btn-info"> sửa </a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa </button>
 
                             </form>
+                            <script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
                         </td>
 
                     </tr>

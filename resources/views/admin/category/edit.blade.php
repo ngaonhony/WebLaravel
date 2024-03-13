@@ -23,7 +23,7 @@
                         <div class="form-group">
                             <strong> Tên danh mục </strong>
                             <input type="text" name="name" value="{{$category->name}}" class="form-control"
-                                placeholder="nhập tên danh mục">
+                                placeholder="nhập tên danh mục" required>
                         </div>
                        
                     </div>
