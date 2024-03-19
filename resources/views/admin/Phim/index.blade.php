@@ -33,6 +33,7 @@
                     <th>Hình ảnh </th>
                     <th>mô tả</th>
                     <th>thời gian</th>
+                    <th>Trailer</th>
 
                 </tr>
             </thead>
@@ -46,13 +47,14 @@
                     <td>{{$phim->name}}</td>
                     <td>{{$phim->status}}</td>
                     <td>{{$phim->director}}</td>
-                    <td>{{$phim->category_id}}</td>
-                    <td>{{$phim->type_movie}}</td>
-                    <td>{{$phim->nation_id}}</td>
+                    <td>{{$phim->genre->name}}</td>
+                    <td>{{$phim->category->name}}</td>
+                    <td>{{$phim->nation->name}}</td>
                     <td>{{$phim->year}}</td>
                     <td><img width="80%" src="{{asset('/images/'.$phim->image)}}"></td>
                     <td>{{$phim->description}}</td>
                     <td>{{$phim->duration}}</td>
+                    <td><iframe width="300" height="300" src="{{$phim->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
                     <td>
                     <form action="{{ route('phim.destroy', $phim->id) }}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
     <a href="{{ route('phim.edit', $phim->id) }}" class="btn btn-info">Sửa</a>

@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-group">
                     <strong>Kiểu phim</strong>
-                    <select name="type_movie" class="form-select" required>
+                    <select name="category_id" class="form-select" required>
                         <option value="">-- Chọn một danh mục --</option>
                         @foreach ($category as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -73,6 +73,10 @@
                 <div class="form-group">
                     <strong>Mô tả</strong>
                     <textarea name="description" class="form-control" placeholder="Ghi mô tả" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <strong>Trailer</strong>
+                    <textarea name="trailer" class="form-control" placeholder="Ghi link trailer" rows="4" required></textarea>
                 </div>
             </div>
         </div>

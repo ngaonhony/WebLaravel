@@ -15,12 +15,13 @@ class Phim extends Model
     'status',
     'director',
     'category_id',
-    'type_movie',
-   'nation_id',
+    'genre_id',
+    'nation_id',
     'year',
     'image',
     'description',
     'duration',
+    'trailer',
     ];
     public function category(){
         return $this->belongsTo(Category::class,'category_id');
@@ -31,4 +32,7 @@ class Phim extends Model
     public function genre(){
         return $this->belongsTo(Genre::class,'genre_id');
     }
+    public function episode(){
+        return $this->hasMany(Episode::class);
+     }
 }

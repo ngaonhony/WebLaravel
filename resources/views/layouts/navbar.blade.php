@@ -34,10 +34,7 @@
                     <a class="nav-link" href="{{route('phim.index')}}">Phim</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Tập phim</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('nguoidung.index')}}">User</a>
+                    <a class="nav-link" href="{{route('episode.index')}}">Tập phim</a>
                 </li>
             </ul>
             <!-- <form class="d-flex">

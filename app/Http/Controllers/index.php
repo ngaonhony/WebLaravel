@@ -3,49 +3,54 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\NguoiDung;
 use App\Models\Category;
 use App\Models\Genre;
 use App\Models\Nation;
 use App\Models\Phim;
+use App\Models\Episode;
 class Index extends Controller
 {
     public function home(){
-        $category = Category::all();
-        $genre = Genre::all();
-        $nation=Nation::all();
-        $category_phim= Category::with('movie')->get();
-        return view('page.home',compact('category','genre','nation','category_phim'));
+        $phim= Category::with('movie')->get();
+        return view('page.home',compact('phim'));
     }
     
     public function danhmuc(){
         $category = Category::all();
-        $genre = Genre::all();
-        $nation=Nation::all();
-        $movie=Phim::where('category_id')->paginate(40);
-        return view('page.home',compact('category','genre','nation','movie'));
+        $category_phim= Category::with('movie')->get();
+        return view('page.danhmuc',compact('category','category_phim'));
     }
     public function theloai(){
-        $category=Category::all();
+
         $genre = Genre::all();
-        $movie=Phim::where('genre_id')->paginate(40);
-        $nation=Nation::all();
-        return view('page.theloai',compact('category','genre','nation','movie'));
+        $genre_phim= Genre::with('movie')->get();  
+        return view('page.theloai',compact('genre','genre_phim'));
     }
+
     public function quocgia(){
+      
+        $nation=Nation::all();
+        $nation_phim= Nation::with('movie')->get();
+        return view('page.quocgia',compact('nation','nation_phim'));
+    }
+
+    public function movie($id){
         $category=Category::all();
         $genre = Genre::all();
         $nation=Nation::all();
-        $movie=Phim::where('nation_id')->paginate(40);
-        return view('page.quocgia',compact('category','genre','nation','movie'));
+        $phim=Phim::with('category','genre','nation')->where('id',$id)->first();
+        return view('page.movie',compact('category','genre','nation','phim'));
     }
-    public function phim(){
-        return view('page.phim');
+
+    public function watch($id){
+        $category=Category::all();
+        $genre = Genre::all();
+        $nation=Nation::all();
+        $phim=Phim::with('category','genre','nation')->where('id',$id)->first();
+        return view('page.watch',compact('category','genre','nation','phim'));
     }
-    public function xemphim(){
-        return view('page.xemphim');
-    }
-    public function tapphim(){
-        return view('page.tapphim');
+
+    public function episode(){
+        return view('page.episode');
     }
 }

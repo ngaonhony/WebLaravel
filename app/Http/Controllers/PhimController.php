@@ -7,6 +7,7 @@ use App\Models\Phim;
 use App\Models\Category;
 use App\Models\Nation;
 use App\Models\Genre;
+use App\Models\Episode;
 use Illuminate\Support\Facades\File;
 class PhimController extends Controller
 {
@@ -18,8 +19,7 @@ class PhimController extends Controller
      */
     public function index()
     {
-        
-       $phim = Phim::all();
+       $phim = Phim::with('genre', 'nation','category')->get();
        return view('admin.phim.index',compact('phim'))->with('i', (request()->input('page', 1) -1) *5);
     }
 
@@ -103,10 +103,11 @@ class PhimController extends Controller
         $phim->status = $request->input('status');
         $phim->director = $request->input('director');
         $phim->category_id = $request->input('category_id');
-        $phim->type_movie = $request->input('type_movie');
+        $phim->genre_id = $request->input('genre_id');
         $phim->nation_id = $request->input('nation_id');
         $phim->year = $request->input('year');
         $phim->description = $request->input('description');
+        $phim->trailer = $request->input('trailer');
             // có file đính kèm trong form update thì tìm và xóa nếu k có thì k xóa
             $anhcu = 'images/' .$phim->image;
             if (File::exists($anhcu)) {
@@ -135,6 +136,7 @@ class PhimController extends Controller
         if (File::exists($anhcu)) {
             File::delete($anhcu);
         }
+        Episode::whereIn('film_id',[$phim->id])->delete();
         $phim->delete();
         return redirect()->route('phim.index')->with('thongbao','xóa phim thành công!');
     }

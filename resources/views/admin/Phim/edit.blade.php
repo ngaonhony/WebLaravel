@@ -20,11 +20,6 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong> Mã phim</strong>
-                            <input type="text" name="id" value="{{$phim->id}}" class="form-control"
-                                placeholder="nhập id Phim" required>
-                        </div>
-                        <div class="form-group">
                             <strong> Tên phim </strong>
                             <input type="text" name="name" value="{{$phim->name}}" class="form-control"
                                 placeholder="nhập tên phim" required>
@@ -42,7 +37,7 @@
                         <div class="col-md-6">
                         <div class="form-group">
                                 <strong> Thể loại </strong>
-                                <select name="category_id" class="form-select">
+                                <select name="genre_id" class="form-select">
                                 @foreach ($genre as $genre)
         <option value="{{ $genre->id }}">{{ $genre->name }}</option>
     @endforeach
@@ -50,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <strong> Kiểu phim </strong>
-                                <select name="type_movie" class="form-select">
+                                <select name="category_id" class="form-select">
                                 @foreach ($category as $category)
         <option value="{{ $category->id }}">{{ $category->name }}</option>
     @endforeach
@@ -70,7 +65,7 @@
                             </div>
                             <div class="form-group">
                                 <strong>Hình ảnh</strong>
-                                <input type="file" name="image" value="{{$phim->image}}" class="form-control" placeholder="chọn hình ảnh" required>
+                                <input type="file" name="image" value="{{$phim->image}}" class="form-control" placeholder="chọn hình ảnh">
                             </div>
                             
                             <div class="form-group">
@@ -78,9 +73,13 @@
                                 <input type="text" name="duration" value="{{$phim->duration}}" class="form-control" placeholder="nhập thời lượng" required>
                             </div>
                             <div class="form-group">
-    <strong>Mô tả</strong>
-    <textarea name="description" class="form-control" placeholder="Ghi mô tả" rows="4" required>{{ $phim->description }}</textarea>
-</div>
+                            <strong>Mô tả</strong>
+                              <textarea name="description" class="form-control" placeholder="Ghi mô tả" rows="4" required>{{ $phim->description }}</textarea>
+                            </div>
+                            <div class="form-group">
+                            <strong>Trailer</strong>
+                              <textarea name="trailer" class="form-control" placeholder="Ghi link trailer" rows="4" required>{{ $phim->trailer }}</textarea>
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-success mt-2"> cập nhật </button>
