@@ -34,5 +34,5 @@ class Phim extends Model
     }
     public function episode(){
         return $this->hasMany(Episode::class);
-     }
+    }
 }

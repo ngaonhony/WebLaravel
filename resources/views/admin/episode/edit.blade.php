@@ -21,7 +21,7 @@
                     <div class="col-md-6">
                     <div class="form-group">
                                 <strong> Film</strong>
-                                <select name="film_id" class="form-select">
+                                <select name="film_id" class="form-select">   
                                 @foreach ($phim as $phim)
                                   <option value="{{ $phim->id }}">{{ $phim->name }}</option>
                                   @endforeach
@@ -29,18 +29,16 @@
                     </div>
                         <div class="form-group">
                             <strong> Tên tap phim </strong>
-                            <input type="text" name="episode_name" value="{{$episode->episode_name}}" class="form-control"
-                                placeholder="nhập tên tap phim" required>
+                            <input type="file" name="content" value="{{$episode->content}}" class="form-control" placeholder="chọn vd">
                         </div>
                         <div class="form-group">
                             <strong> So tap </strong>
-                            <input type="number" name="episode" value="{{$episode->episode}}" class="form-control"
+                            <input type="text" name="episode" value="{{$episode->episode}}" class="form-control"
                                 placeholder="so tap phim" required>
                         </div>
                         <div class="form-group">
                             <strong>Content</strong>
-                            <input type="text" name="content" value="{{$episode->content}}" class="form-control"
-                                placeholder="nhap Link phim" required>
+                            <input type="file" name="content" value="{{$episode->content}}" class="form-control" placeholder="Chọn video" required>
                         </div>
                 </div>
                     <button type="submit" class="btn btn-success mt-2"> cập nhật </button>

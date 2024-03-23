@@ -36,8 +36,20 @@ class NationController extends Controller
      */
     public function store(Request $request)
     {
+        $name = $request->input('name');
+
+        $existingCategory = Nation::where('name', $name)->first();
+     
+        if ($existingCategory) {
+            // Giá trị đã tồn tại trong cơ sở dữ liệu
+            return redirect()->route('nation.index')->with('thongbao', 'Quốc gia đã tồn tại!');
+        }
+     
+        // Giá trị không tồn tại trong cơ sở dữ liệu, tạo danh mục mới
         Nation::create($request->all());
-       return redirect()->route('nation.index')->with('thongbao', 'Thêm quốc gia thành công');
+     
+        return redirect()->route('nation.index')->with('thongbao', 'Thêm quốc gia thành công!');
+     
     }
 
     /**
@@ -71,6 +83,14 @@ class NationController extends Controller
      */
     public function update(Request $request,Nation $nation)
     {
+        $name = $request->input('name');
+
+        $existingCategory = Nation::where('name', $name)->first();
+     
+        if ($existingCategory) {
+            // Giá trị đã tồn tại trong cơ sở dữ liệu
+            return redirect()->route('nation.index')->with('thongbao', 'Quốc gia đã tồn tại!');
+        }
        $nation-> update( $request->all());
        return redirect()->route('nation.index')->with('thongbao','cập nhật quốc gia thành công!');
     }

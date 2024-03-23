@@ -48,22 +48,26 @@ class PhimController extends Controller
         $phim->status = $request->input('status');
         $phim->director = $request->input('director');
         $phim->category_id = $request->input('category_id');
-        $phim->type_movie = $request->input('type_movie');
+        $phim->type_movie = $request->input('genre_id');
         $phim->nation_id = $request->input('nation_id');
         $phim->year = $request->input('year');
         $phim->description = $request->input('description');
         $phim->duration = $request->input('duration');
-       
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $extension = $image->getClientOriginalExtension();
-            $filename = time().'.'.$extension;
-            $image->move(public_path('images'), $filename);
-            $phim->image= $filename;
-        }
-    
-        $phim->save();
-        return redirect()->route('phim.index')->with('thongbao', 'Thêm phim thành công');
+        $phim_check=Phim::where('name',$phim->name)->count();
+        if($phim_check>0){
+            return redirect()->route('phim.index')->with('thongbao', 'Phim đã bị trùng');
+        }else{
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $extension = $image->getClientOriginalExtension();
+                $filename = time().'.'.$extension;
+                $image->move(public_path('images'), $filename);
+                $phim->image= $filename;
+            }
+        
+            $phim->save();
+            return redirect()->route('phim.index')->with('thongbao', 'Thêm phim thành công');
+        }      
     }
     /**
      * Display the specified resource.
@@ -110,6 +114,10 @@ class PhimController extends Controller
         $phim->trailer = $request->input('trailer');
             // có file đính kèm trong form update thì tìm và xóa nếu k có thì k xóa
             $anhcu = 'images/' .$phim->image;
+        $phim_check=Phim::where('name',$phim->name)->count();
+        if($phim_check>0){
+            return redirect()->route('phim.index')->with('thongbao', 'Phim đã bị trùng');
+        }else{
             if (File::exists($anhcu)) {
                 File::delete($anhcu);
             }
@@ -122,6 +130,8 @@ class PhimController extends Controller
             }
        $phim-> update();
        return redirect()->route('phim.index')->with('thongbao','cập nhật phim thành công!');
+        }
+            
     }
 }
 

@@ -62,7 +62,7 @@ a.active {
 .owl-item {
   width: 1200px;
   margin: 0 auto;
-  height: 500px;
+ /* height: auto;*/
 }
 
 .owl-item-left {
@@ -166,10 +166,7 @@ a.active {
   line-height: 20px;
   font-weight: 700;
   max-width:272px;
-  font-size: 20px;
-  overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  font-size: 11px;
 }
 
 .movie-body-left a:hover {

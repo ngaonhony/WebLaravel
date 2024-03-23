@@ -20,11 +20,12 @@
                 {{Session::get('thongbao')}}
             </div>
             @endif
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="phim">
                 <thead>
                     <tr>
                         <th> ID </th>
                         <th> Tên quốc gia</th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,27 +33,23 @@
                     <tr>
                         <td>{{$nation->id}} </td>
                         <td>{{$nation->name}} </td>
-                      
                         <td>
                             <form action="{{route('nation.destroy', $nation->id)}}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
                                 <a href="{{route('nation.edit', $nation->id)}}" class="btn btn-info"> sửa </a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa </button>
-
                             </form>
-                            <script>
-    function confirmDelete() {
-        return confirm('Bạn có chắc chắn muốn xóa phim này?');
-    }
-</script>
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-
+            <script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
         </div>
     </div>
 </div>

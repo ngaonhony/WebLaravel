@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="card-header">
@@ -18,10 +17,9 @@
             {{Session::get('thongbao')}}
         </div>
         @endif
-        <table class="table table-bordered">
+        <table class="table table-bordered" id="phim">
             <thead>
                 <tr>
-
                     <th> Mã phim </th>
                     <th>Tên phim </th>
                     <th>Trạng thái</th>
@@ -34,13 +32,13 @@
                     <th>mô tả</th>
                     <th>thời gian</th>
                     <th>Trailer</th>
-
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-            @php
-    $phim = $phim->reverse(); // Sắp xếp mảng theo thứ tự ngược lại
-@endphp
+                @php
+                $phim = $phim->reverse(); // Sắp xếp mảng theo thứ tự ngược lại
+                @endphp
                 @foreach ($phim as $phim)
                 <tr>
                     <td>{{$phim->id}}</td>
@@ -52,27 +50,26 @@
                     <td>{{$phim->nation->name}}</td>
                     <td>{{$phim->year}}</td>
                     <td><img width="80%" src="{{asset('/images/'.$phim->image)}}"></td>
-                    <td>{{$phim->description}}</td>
+                    <td><textarea>{{$phim->description}}</textarea></td>
                     <td>{{$phim->duration}}</td>
-                    <td><iframe width="300" height="300" src="{{$phim->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
-                    <td>
-                    <form action="{{ route('phim.destroy', $phim->id) }}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
-    <a href="{{ route('phim.edit', $phim->id) }}" class="btn btn-info">Sửa</a>
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-danger">Xóa</button>
-</form>
+                    <td><iframe width="200" height="200" src="{{$phim->trailer}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
+                    <td><form action="{{ route('phim.destroy', $phim->id) }}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
+                    <a href="{{ route('phim.edit', $phim->id) }}" class="btn btn-info">Sửa</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form></td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
 <script>
     function confirmDelete() {
         return confirm('Bạn có chắc chắn muốn xóa phim này?');
     }
 </script>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+                    
     </div>
 </div>
 </div>

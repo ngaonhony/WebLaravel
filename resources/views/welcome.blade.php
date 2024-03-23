@@ -33,6 +33,42 @@
 <link rel="stylesheet" href="{{asset('plugins/fontawesome/css/all.min.css')}}">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <meta charset="utf-8" />
+      <meta content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+      <meta name="theme-color" content="#234556">
+      <meta http-equiv="Content-Language" content="vi" />
+      <meta content="VN" name="geo.region" />
+      <meta name="DC.language" scheme="utf-8" content="vi" />
+      <meta name="language" content="Việt Nam">
+      <link rel="stylesheet" href="{{asset('css/all.css')}}" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+      <link rel="shortcut icon" href="{{asset('images/logo-icon.jpg')}}" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/fontawesome.min.css">
+      <meta name="revisit-after" content="1 days" />
+      <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+      <title>Phim hay 2021 - Xem phim hay nhất</title>
+      <meta name="description" content="Phim hay 2021 - Xem phim hay nhất, xem phim online miễn phí, phim hot , phim nhanh" />
+      <link rel="canonical" href="">
+      <link rel="next" href="" />
+      <meta property="og:locale" content="vi_VN" />
+      <meta property="og:title" content="Phim hay 2020 - Xem phim hay nhất" />
+      <meta property="og:description" content="Phim hay 2020 - Xem phim hay nhất, phim hay trung quốc, hàn quốc, việt nam, mỹ, hong kong , chiếu rạp" />
+      <meta property="og:url" content="" />
+      <meta property="og:site_name" content="Phim hay 2021- Xem phim hay nhất" />
+      <meta property="og:image" content="" />
+      <meta property="og:image:width" content="300" />
+      <meta property="og:image:height" content="55" />
+     
+      <link rel='dns-prefetch' href='//s.w.org' />
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <link rel='stylesheet' id='bootstrap-css' href="{{asset('css/bootstrap.min.css?ver=5.7.2')}}" media='all' />
+      <link rel='stylesheet' id='style-css' href="{{asset('css/movie.css?ver=5.7.2')}}" media='all' />
+      <link rel='stylesheet' id='wp-block-library-css' href="{{asset('css/style.min.css?ver=5.7.2')}}" media='all' />
+      <script type='text/javascript' src="{{asset('js/jquery.min.js?ver=5.7.2')}}" id='halim-jquery-js'></script>
+      <style type="text/css" id="wp-custom-css">
+         .textwidget p a img {
+         width: 100%;
+         }
+      </style>
 </head>
 
 <body>
@@ -40,8 +76,8 @@
         <div class="header">
             <div class="navbar-inner">
                 <div class="navbar-logo">
-                    <a href="">
-                        <img src="./img/logo-default.png" alt="">
+                    <a href="{{route('homepage')}}">
+                        <img src="{{asset('/videos/logo-default.png')}}" alt="">
                     </a>
                 </div>
                 <div class="navbar-menu">
@@ -50,8 +86,13 @@
                         <li><a href="{{route('danhmuc')}}">Catalog</a></li>
                         <li><a href="{{route('theloai')}}">Genre</a></li>
                         <li><a href="{{route('quocgia')}}">Country</a></li>
-                        <li><a href="">Page</a></li>
-                        <li><a href="">Contact Us</a></li>
+                        <li><form action="{{ route('timkiem') }}" class="subscribe">
+                                <div class="form-wrap">
+                                    <input class="text-input" type="text" name="key" placeholder="Tìm kiếm">
+                                    <button class="button-btn">Tìm kiếm</button>
+                                </div>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +104,7 @@
         <div class="footer">
             <div class="container">
                 <div class="footer-content">
-                    <img src="./img/logo-default.png" alt="">
+                    <img src="{{asset('/videos/logo-default.png')}}" alt="">
                     <ul class="list-inline">
                         <li>
                             <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -79,9 +120,96 @@
             </div>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-
+<script type='text/javascript' src="{{asset('js/bootstrap.min.js?ver=5.7.2')}}" id='bootstrap-js'></script>
+      <script type='text/javascript' src="{{asset('js/owl.carousel.min.js?ver=5.7.2')}}" id='carousel-js'></script>
+     
+      <script type='text/javascript' src="{{asset('js/halimtheme-core.min.js?ver=1626273138')}}" id='halim-init-js'></script>
+      <script type="text/javascript">
+    $(".watch_trailer").click(function(e) {
+    e.preventDefault();
+    var aid = $(this).attr("href");
+    $('html,body').animate({scrollTop: $(aid).offset().top},'slow');
+});</script>
+     
+     
+   
+      <style>#overlay_mb{position:fixed;display:none;width:100%;height:100%;top:0;left:0;right:0;bottom:0;background-color:rgba(0, 0, 0, 0.7);z-index:99999;cursor:pointer}#overlay_mb .overlay_mb_content{position:relative;height:100%}.overlay_mb_block{display:inline-block;position:relative}#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:600px;height:auto;position:relative;left:50%;top:50%;transform:translate(-50%, -50%);text-align:center}#overlay_mb .overlay_mb_content .cls_ov{color:#fff;text-align:center;cursor:pointer;position:absolute;top:5px;right:5px;z-index:999999;font-size:14px;padding:4px 10px;border:1px solid #aeaeae;background-color:rgba(0, 0, 0, 0.7)}#overlay_mb img{position:relative;z-index:999}@media only screen and (max-width: 768px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:400px;top:3%;transform:translate(-50%, 3%)}}@media only screen and (max-width: 400px){#overlay_mb .overlay_mb_content .overlay_mb_wrapper{width:310px;top:3%;transform:translate(-50%, 3%)}}</style>
+    
+      <style>
+         #overlay_pc {
+         position: fixed;
+         display: none;
+         width: 100%;
+         height: 100%;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: rgba(0, 0, 0, 0.7);
+         z-index: 99999;
+         cursor: pointer;
+         }
+         #overlay_pc .overlay_pc_content {
+         position: relative;
+         height: 100%;
+         }
+         .overlay_pc_block {
+         display: inline-block;
+         position: relative;
+         }
+         #overlay_pc .overlay_pc_content .overlay_pc_wrapper {
+         width: 600px;
+         height: auto;
+         position: relative;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+         text-align: center;
+         }
+         #overlay_pc .overlay_pc_content .cls_ov {
+         color: #fff;
+         text-align: center;
+         cursor: pointer;
+         position: absolute;
+         top: 5px;
+         right: 5px;
+         z-index: 999999;
+         font-size: 14px;
+         padding: 4px 10px;
+         border: 1px solid #aeaeae;
+         background-color: rgba(0, 0, 0, 0.7);
+         }
+         #overlay_pc img {
+         position: relative;
+         z-index: 999;
+         }
+         @media only screen and (max-width: 768px) {
+         #overlay_pc .overlay_pc_content .overlay_pc_wrapper {
+         width: 400px;
+         top: 3%;
+         transform: translate(-50%, 3%);
+         }
+         }
+         @media only screen and (max-width: 400px) {
+         #overlay_pc .overlay_pc_content .overlay_pc_wrapper {
+         width: 310px;
+         top: 3%;
+         transform: translate(-50%, 3%);
+         }
+         }
+      </style>
+     
+      <style>
+         .float-ck { position: fixed; bottom: 0px; z-index: 9}
+         * html .float-ck /* IE6 position fixed Bottom */{position:absolute;bottom:auto;top:expression(eval (document.documentElement.scrollTop+document.docum entElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0))) ;}
+         #hide_float_left a {background: #0098D2;padding: 5px 15px 5px 15px;color: #FFF;font-weight: 700;float: left;}
+         #hide_float_left_m a {background: #0098D2;padding: 5px 15px 5px 15px;color: #FFF;font-weight: 700;}
+         span.bannermobi2 img {height: 70px;width: 300px;}
+         #hide_float_right a { background: #01AEF0; padding: 5px 5px 1px 5px; color: #FFF;float: left;}
+      </style>
 </html>

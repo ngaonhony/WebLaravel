@@ -20,11 +20,12 @@
                 {{Session::get('thongbao')}}
             </div>
             @endif
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="phim">
                 <thead>
                     <tr>
                         <th> ID </th>
                         <th> Tên danh mục</th>
+                        <th></tH>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,11 +45,7 @@
                                 <button type="submit" class="btn btn-danger">Xóa </button>
 
                             </form>
-                            <script>
-    function confirmDelete() {
-        return confirm('Bạn có chắc chắn muốn xóa phim này?');
-    }
-</script>
+                            
                         </td>
 
                     </tr>
@@ -59,4 +56,9 @@
         </div>
     </div>
 </div>
+<script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
 @endsection

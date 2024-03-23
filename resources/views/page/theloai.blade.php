@@ -6,27 +6,27 @@
     <div class="my-button container">
             @foreach($genre as $nation)
             
-            <button class="btn btn-raised shadow my-button w-xs red"><div class="category-item" data-category="{{$nation->name}}">{{$nation->name}}</div></button>
+            <button class="btn btn-raised shadow my-button w-xs red"><div class="category-item" data-category="{{$nation->id}}">{{$nation->name}}</div></button>
             
             @endforeach
             </div>    
+            @foreach($genre_phim as $phim)
     <div class="movie-section">
-        @foreach($genre_phim as $nation)
-            <div class="movie-gallery" data-category="{{$nation->name}}">
-                @foreach($nation->movie as $phim)
-                    <div class="movie-thumbnail">
-                        <img src="{{asset('/images/'.$phim->image)}}" alt="">
-                    </div>
-                    <div class="movie-body-left">
-                        <h6>
-                            <a href="{{route('movie',['id' => $phim->id])}}">{{$phim->name}}</a>
-                        </h6>
-                        <p class="text-gray">2018, USA, Action</p>
-                    </div>
-                @endforeach
+            <div class="movie-gallery" data-category="{{$phim->genre_id}}">
+                
+                <div class="movie-thumbnail">
+                  <a href="{{route('movie',['id' => $phim->id])}}"> <img src="{{asset('/images/'.$phim->image)}}" alt=""></a>
+               </div>
+               <div class="movie-body-left">
+                   <h6>
+                       <a href="{{route('movie',['id' => $phim->id])}}">{{$phim->name}}</a>
+                   </h6>
+                   <p class="text-gray">{{$phim->year}},{{$phim->nation->name}}, {{$phim->genre->name}}</p>
+               </div>
+               
             </div>
-        @endforeach
-    </div>
+    </div> 
+    @endforeach
 </div>
 
 <script>
@@ -65,12 +65,9 @@
     
 }); 
  </script>
-<script src="{{ asset('js/categories.js') }}"></script>
 <style>
-  .my-button {
-    display: initial;
-    height: 40px;
-    }
+         .movie-title {
+            color: #000000;}
     .category-item {
         height: 100%; /* Đảm bảo nút lấp đầy chiều cao của phần tử cha */
     }
@@ -119,10 +116,6 @@
 .my-button,
 .my-2 {
     margin-bottom: .5rem!important
-}
-
-.w-xs {
-    width: 100px
 }
 
 .red {

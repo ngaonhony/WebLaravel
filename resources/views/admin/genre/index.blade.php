@@ -20,42 +20,39 @@
                 {{Session::get('thongbao')}}
             </div>
             @endif
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="phim">
                 <thead>
                     <tr>
                         <th> ID </th>
                         <th> Tên thể loại</th>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
                 @php
-    $genre= $genre->reverse(); // Sắp xếp mảng theo thứ tự ngược lại
-@endphp
+                $genre= $genre->reverse(); // Sắp xếp mảng theo thứ tự ngược lại
+                @endphp
                     @foreach ($genre as $genre)
                     <tr>
                         <td>{{$genre->id}} </td>
                         <td>{{$genre->name}} </td>
-                      
                         <td>
                             <form action="{{route('genre.destroy', $genre->id)}}" method="POST" id="deleteForm" onsubmit="return confirmDelete()">
                                 <a href="{{route('genre.edit', $genre->id)}}" class="btn btn-info"> sửa </a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Xóa </button>
-
-                            </form>
-                            <script>
-    function confirmDelete() {
-        return confirm('Bạn có chắc chắn muốn xóa phim này?');
-    }
-</script>
+                            </form>                      
                         </td>
-
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-
+            <script>
+    function confirmDelete() {
+        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+    }
+</script>
         </div>
     </div>
 </div>

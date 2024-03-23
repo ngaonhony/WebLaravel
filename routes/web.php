@@ -25,8 +25,10 @@ Route::get('/danhmuc', [App\Http\Controllers\Index::class, 'danhmuc'])->name('da
 Route::get('/theloai', [App\Http\Controllers\Index::class, 'theloai'])->name('theloai');
 Route::get('/quocgia', [App\Http\Controllers\Index::class, 'quocgia'])->name('quocgia');
 Route::get('/movie/{id}', [App\Http\Controllers\Index::class, 'movie'])->name('movie');
-Route::get('/xem-phim/{id}', [App\Http\Controllers\Index::class, 'watch'])->name('watch');
+Route::get('/xem-phim/{id}/episode/{tap}', [App\Http\Controllers\Index::class, 'watch'])->name('watch');
 Route::get('/episode', [App\Http\Controllers\Index::class, 'episode'])->name('episode');
+Route::get('/timkiem', [App\Http\Controllers\Index::class, 'timkiem'])->name('timkiem');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

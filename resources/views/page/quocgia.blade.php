@@ -6,14 +6,14 @@
     <div class="my-button container">
             @foreach($nation as $nation)
             
-            <button class="btn btn-raised shadow my-button w-xs red"><div class="category-item" data-category="{{$nation->name}}">{{$nation->name}}</div></button>
+            <button class="btn btn-raised shadow my-button w-xs red"><div class="category-item" data-category="{{$nation->id}}">{{$nation->name}}</div></button>
             
             @endforeach
-            </div>    
-    <div class="movie-section">
-        @foreach($nation_phim as $nation)
-            <div class="movie-gallery" data-category="{{$nation->name}}">
-                @foreach($nation->movie as $phim)       
+            </div> 
+            @foreach($nation_phim as $phim)   
+    <div class="movie-section"> 
+            <div class="movie-gallery" data-category="{{$phim->nation_id}}">
+                    
                <div class="movie-thumbnail">
                   <a href="{{route('movie',['id' => $phim->id])}}"> <img src="{{asset('/images/'.$phim->image)}}" alt=""></a>
                </div>
@@ -21,12 +21,12 @@
                    <h6>
                        <a href="{{route('movie',['id' => $phim->id])}}">{{$phim->name}}</a>
                    </h6>
-                   <p class="text-gray">2018, USA, Action</p>
+                   <p class="text-gray">{{$phim->year}},{{$phim->nation->name}}, {{$phim->genre->name}}</p>
                </div>
-                @endforeach
+        
             </div>
-        @endforeach
-    </div>
+    </div> 
+    @endforeach
 </div>
 
 <script>
@@ -65,15 +65,13 @@
     
 }); 
  </script>
-<script src="{{ asset('js/categories.js') }}"></script>
 <style>
-   .my-button {
-    display: initial;
-    height: 40px;
-    }
-    .category-item {
-        height: 100%; /* Đảm bảo nút lấp đầy chiều cao của phần tử cha */
-    }
+.movie-title {
+    color: #000000;
+}
+.category-item {
+    height: 100%; /* Đảm bảo nút lấp đầy chiều cao của phần tử cha */
+}
 .btn-raised {
     transition: box-shadow .4s cubic-bezier(.25, .8, .25, 1), transform .4s cubic-bezier(.25, .8, .25, 1);
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26)
@@ -119,10 +117,6 @@
 .my-button,
 .my-2 {
     margin-bottom: .5rem!important
-}
-
-.w-xs {
-    width: 100px
 }
 
 .red {

@@ -21,8 +21,20 @@ public function create()
 
 public function store(Request $request)
 {
-    Category::create($request->all());
-    return redirect()->route('category.index')->with('thongbao', 'Thêm danh mục thành công!');
+   $name = $request->input('name');
+
+   $existingCategory = Category::where('name', $name)->first();
+
+   if ($existingCategory) {
+       // Giá trị đã tồn tại trong cơ sở dữ liệu
+       return redirect()->route('category.index')->with('thongbao', 'Danh mục đã tồn tại!');
+   }
+
+   // Giá trị không tồn tại trong cơ sở dữ liệu, tạo danh mục mới
+   Category::create($request->all());
+
+   return redirect()->route('category.index')->with('thongbao', 'Thêm danh mục thành công!');
+
 }
 /** 
 * @param  int  $id
@@ -53,6 +65,14 @@ public function edit(Category $category)
 */
 public function update(Request $request,Category $category)
 {
+   $name = $request->input('name');
+
+        $existingCategory = Category::where('name', $name)->first();
+     
+        if ($existingCategory) {
+            // Giá trị đã tồn tại trong cơ sở dữ liệu
+            return redirect()->route('category.index')->with('thongbao', 'Danh mục đã tồn tại!');
+        }
    $category->update($request->all());
    return redirect()->route('category.index')->with('thongbao','Cập nhật danh mục thành công!'); 
 }

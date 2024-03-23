@@ -36,8 +36,20 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
+        $name = $request->input('name');
+
+        $existingCategory = Genre::where('name', $name)->first();
+     
+        if ($existingCategory) {
+            // Giá trị đã tồn tại trong cơ sở dữ liệu
+            return redirect()->route('genre.index')->with('thongbao', 'Thể lọai đã tồn tại!');
+        }
+     
+        // Giá trị không tồn tại trong cơ sở dữ liệu, tạo danh mục mới
         Genre::create($request->all());
-       return redirect()->route('genre.index')->with('thongbao', 'Thêm thể loại thành công');
+
+        return redirect()->route('genre.index')->with('thongbao', 'Thêm thể loại thành công!');
+     
     }
 
     /**
@@ -71,6 +83,14 @@ class GenreController extends Controller
      */
     public function update(Request $request,Genre $genre)
     {
+        $name = $request->input('name');
+
+        $existingCategory = Genre::where('name', $name)->first();
+     
+        if ($existingCategory) {
+            // Giá trị đã tồn tại trong cơ sở dữ liệu
+            return redirect()->route('genre.index')->with('thongbao', 'Thể loại đã tồn tại!');
+        }
        $genre-> update( $request->all());
        return redirect()->route('genre.index')->with('thongbao','cập nhật thể loại thành công!');
     }

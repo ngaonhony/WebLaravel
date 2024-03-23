@@ -37,11 +37,11 @@
                 
                 <div class="form-group">
                     <strong>So tap</strong>
-                    <input type="text" name="episode" class="form-control" placeholder="Nhập năm phát hành" required>
+                    <input type="text" name="episode" class="form-control" placeholder="Nhập so tap" required>
                 </div>
                 <div class="form-group">
                     <strong>Link phim</strong>
-                    <input type="text" name="content" class="form-control" placeholder="Chọn hình ảnh" required>
+                    <input type="file" name="content" class="form-control" placeholder="Chọn video" required>
                 </div>
             </div>
         </div>
