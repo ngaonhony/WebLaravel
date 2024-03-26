@@ -50,7 +50,7 @@
             </table>
             <script>
     function confirmDelete() {
-        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+        return confirm('Bạn có chắc chắn muốn xóa thể loại này?');
     }
 </script>
         </div>

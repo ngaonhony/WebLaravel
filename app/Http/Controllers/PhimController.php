@@ -19,7 +19,7 @@ class PhimController extends Controller
      */
     public function index()
     {
-       $phim = Phim::with('genre', 'nation','category')->get();
+       $phim = Phim::with('genre', 'nation','category')->get()->reverse();
        return view('admin.phim.index',compact('phim'))->with('i', (request()->input('page', 1) -1) *5);
     }
 
@@ -48,7 +48,7 @@ class PhimController extends Controller
         $phim->status = $request->input('status');
         $phim->director = $request->input('director');
         $phim->category_id = $request->input('category_id');
-        $phim->type_movie = $request->input('genre_id');
+        $phim->genre_id = $request->input('genre_id');
         $phim->nation_id = $request->input('nation_id');
         $phim->year = $request->input('year');
         $phim->description = $request->input('description');

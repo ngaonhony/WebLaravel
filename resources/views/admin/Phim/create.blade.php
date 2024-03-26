@@ -33,7 +33,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <strong>Thể loại</strong>
-                    <select name="category_id" class="form-select" required>
+                    <select name="genre_id" class="form-select" required>
                         <option value="">-- Chọn một thể loại --</option>
                         @foreach ($genre as $genre)
                             <option value="{{ $genre->id }}">{{ $genre->name }}</option>

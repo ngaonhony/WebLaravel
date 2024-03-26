@@ -11,7 +11,7 @@ class CategoryController extends Controller
     */
     public function index()
 {
-    $category = Category::all();
+    $category = Category::all()->reverse();
     return view('admin.category.index',compact('category'))->with('i', (request()->input('page', 1) -1) *5);
 }
 public function create()
@@ -31,7 +31,9 @@ public function store(Request $request)
    }
 
    // Giá trị không tồn tại trong cơ sở dữ liệu, tạo danh mục mới
-   Category::create($request->all());
+   $nation = new Category();
+   $nation->name = $name;
+   $nation->save();
 
    return redirect()->route('category.index')->with('thongbao', 'Thêm danh mục thành công!');
 
@@ -73,7 +75,7 @@ public function update(Request $request,Category $category)
             // Giá trị đã tồn tại trong cơ sở dữ liệu
             return redirect()->route('category.index')->with('thongbao', 'Danh mục đã tồn tại!');
         }
-   $category->update($request->all());
+   $category->update();
    return redirect()->route('category.index')->with('thongbao','Cập nhật danh mục thành công!'); 
 }
 

@@ -29,7 +29,7 @@
                     </div>
                         <div class="form-group">
                             <strong> Tên tap phim </strong>
-                            <input type="file" name="content" value="{{$episode->content}}" class="form-control" placeholder="chọn vd">
+                            <input type="text" name="content" value="{{$episode->episode_name}}" class="form-control" placeholder="Nhập tên tập phim">
                         </div>
                         <div class="form-group">
                             <strong> So tap </strong>

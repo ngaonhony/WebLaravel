@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 { protected $table = 'episode';
-    protected $primaryKey = 'id';
     use HasFactory;
    
     // Nếu không sử dụng các trường timestamps (created_at, updated_at)

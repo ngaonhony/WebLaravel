@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Genre extends Model
 {
     protected $table = 'genre';
-    protected $primaryKey = 'id';
     use HasFactory;
    
     // Nếu không sử dụng các trường timestamps (created_at, updated_at)

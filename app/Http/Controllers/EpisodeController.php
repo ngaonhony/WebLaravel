@@ -14,7 +14,7 @@ class EpisodeController extends Controller
     public function index()
     {
 
-        $episode = Episode::with('phim')->get();
+        $episode = Episode::with('phim')->get()->reverse();
         return view('admin.episode.index',compact('episode'))->with('i', (request()->input('page', 1) -1) *5);
     }
 

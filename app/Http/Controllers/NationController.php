@@ -14,7 +14,7 @@ class NationController extends Controller
     public function index()
     {
         
-       $nation = Nation::all();
+       $nation = Nation::all()->reverse();
        return view('admin.nation.index',compact('nation'))->with('i', (request()->input('page', 1) -1) *5);
     }
 
@@ -46,7 +46,9 @@ class NationController extends Controller
         }
      
         // Giá trị không tồn tại trong cơ sở dữ liệu, tạo danh mục mới
-        Nation::create($request->all());
+        $nation = new Nation();
+        $nation->name = $name;
+        $nation->save();
      
         return redirect()->route('nation.index')->with('thongbao', 'Thêm quốc gia thành công!');
      
@@ -91,7 +93,7 @@ class NationController extends Controller
             // Giá trị đã tồn tại trong cơ sở dữ liệu
             return redirect()->route('nation.index')->with('thongbao', 'Quốc gia đã tồn tại!');
         }
-       $nation-> update( $request->all());
+       $nation-> update();
        return redirect()->route('nation.index')->with('thongbao','cập nhật quốc gia thành công!');
     }
 

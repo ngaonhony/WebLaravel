@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 { protected $table = 'category';
-    protected $primaryKey = 'id';
     use HasFactory;
    
     // Nếu không sử dụng các trường timestamps (created_at, updated_at)

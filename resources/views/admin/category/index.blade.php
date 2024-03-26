@@ -58,7 +58,7 @@
 </div>
 <script>
     function confirmDelete() {
-        return confirm('Bạn có chắc chắn muốn xóa phim này?');
+        return confirm('Bạn có chắc chắn muốn xóa danh mục này?');
     }
 </script>
 @endsection
